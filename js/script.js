@@ -35,3 +35,18 @@ const links = document.querySelectorAll('.titles a');
 for(let link of links){
   link.addEventListener('click', titleClickHandler);
 }
+
+function generateTitleList() {
+  /* Clear links in left column */
+
+  /* Find id of every article */
+  
+  /* Find title of every article */
+  
+  /* Create html for single link */
+
+  /* Add created code into the left column */
+
+}
+
+generateTitleList();
