@@ -3,7 +3,6 @@
 function titleClickHandler(event){
   event.preventDefault();
   const clickedElement = this;
-  console.log('Link was clicked!');
   
   /* [DONE] remove class 'active' from all article links  */
   const activeLinks = document.querySelectorAll('.titles a.active');
@@ -37,8 +36,13 @@ for(let link of links){
 }
 
 function generateTitleList() {
-  /* Clear links in left column */
-
+  const optArticleSelector = '.post',
+        optTitleSelector = '.post-title',
+        optTitleListSelector = '.titles';
+  
+  /* Clear content of titlelist */
+  document.querySelector(optTitleListSelector).innerHTML = "";
+  
   /* Find id of every article */
   
   /* Find title of every article */
