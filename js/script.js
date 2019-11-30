@@ -43,13 +43,20 @@ function generateTitleList() {
   /* Clear content of titlelist */
   document.querySelector(optTitleListSelector).innerHTML = "";
   
+  const articles = document.querySelectorAll(optArticleSelector);
+  for (article of aricles) {
   /* Find id of every article */
-  
+    const articleId = article.getAttribute('id');
+
   /* Find title of every article */
-  
+    const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+
   /* Create html for single link */
 
-  /* Add created code into the left column */
+
+  /* Add created code to the titlelist */
+
+  }
 
 }
 
