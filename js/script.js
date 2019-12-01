@@ -32,28 +32,33 @@ function titleClickHandler(event){
 function generateTitleList() {
   const optArticleSelector = '.post',
         optTitleSelector = '.post-title',
-        optTitleListSelector = '.titles',
-        titleList = document.querySelector(optTitleListSelector);
+        optTitleListSelector = '.titles';
+  let html = '';
 
   /* [DONE] Clear content of titlelist */
+  const titleList = document.querySelector(optTitleListSelector);
   titleList.innerHTML = "";
-  
+
+  /* [DONE] Find all articles and save them to variable: articles */
   const articles = document.querySelectorAll(optArticleSelector);
+
+  /* [DONE] For every article */
   for (let article of articles) {
-  /* [DONE] Find id of every article */
+  
+    /* [DONE] Find id of every article */
     const articleId = article.getAttribute('id');
 
-  /* [DONE] Find title of every article */
+    /* [DONE] Find title of every article */
     const articleTitle = article.querySelector(optTitleSelector).innerHTML;
 
-  /* [DONE] Create html for single link */
+    /* [DONE] Create html for single link */
     const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
     console.log(linkHTML);
 
-  /* Add created code to the titlelist */
-    titleList.insertAdjacentHTML('beforeend', linkHTML);
+    /* Add created code to the titlelist */
+    html += linkHTML;
   }
-
+  titleList.insertAdjacentHTML('beforeend', html);
 }
 
 generateTitleList();
