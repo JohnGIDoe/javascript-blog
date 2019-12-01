@@ -51,7 +51,7 @@ function generateTitleList() {
     console.log(linkHTML);
 
   /* Add created code to the titlelist */
-    titleList.innerHTML += linkHTML;
+    titleList.insertAdjacentHTML('beforeend', linkHTML);
   }
 
 }
