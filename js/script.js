@@ -40,22 +40,23 @@ function generateTitleList() {
         optTitleSelector = '.post-title',
         optTitleListSelector = '.titles';
   
-  /* Clear content of titlelist */
+  /* [DONE] Clear content of titlelist */
   document.querySelector(optTitleListSelector).innerHTML = "";
   
   const articles = document.querySelectorAll(optArticleSelector);
-  for (article of aricles) {
-  /* Find id of every article */
+  for (let article of articles) {
+  /* [DONE] Find id of every article */
     const articleId = article.getAttribute('id');
 
-  /* Find title of every article */
+  /* [DONE] Find title of every article */
     const articleTitle = article.querySelector(optTitleSelector).innerHTML;
 
   /* Create html for single link */
-
+    const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+    console.log(linkHTML);
 
   /* Add created code to the titlelist */
-
+    
   }
 
 }
