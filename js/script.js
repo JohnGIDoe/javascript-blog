@@ -59,12 +59,13 @@ function generateTitleList() {
     html += linkHTML;
   }
   titleList.insertAdjacentHTML('beforeend', html);
+
+  /* Assign EventListener for every link */
+  const links = document.querySelectorAll('.titles a');
+
+  for(let link of links){
+    link.addEventListener('click', titleClickHandler);
+  }
 }
 
 generateTitleList();
-
-const links = document.querySelectorAll('.titles a');
-
-for(let link of links){
-  link.addEventListener('click', titleClickHandler);
-}
