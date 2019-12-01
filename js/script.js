@@ -53,7 +53,6 @@ function generateTitleList() {
 
     /* [DONE] Create html for single link */
     const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
-    console.log(linkHTML);
 
     /* Add created code to the titlelist */
     html += linkHTML;
