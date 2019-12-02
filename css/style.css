@@ -10,10 +10,12 @@
 body {
   background: #fff;
   font-family: "Source Sans Pro", sans-serif;
-  color: #444;
+  color: #4e3847;
   font-weight: 300;
   font-size: 16px;
   line-height: 1.7;
+  background-image: url("../images/background6.jpg");
+  background-size: cover;
 }
 
 .container {
@@ -31,7 +33,16 @@ body {
 .section-title span {
   text-transform: none;
   font-weight: 400;
-  color: #777777;
+  color: #554649;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  font-size: 18px;
 }
 
 /* Layout */
@@ -44,20 +55,24 @@ body {
 .sidebar {
   -ms-flex: 1 0 0px;
       flex: 1 0 0;
+  text-align: center;
 }
 
 .posts {
   -ms-flex: 2 0 0px;
       flex: 2 0 0;
+  text-align: left;
+  position: relative;
+  height: 620px;
 }
 
 .sidebar,
 .posts {
-  background: #fff;
+  border: 1px solid #c7c8be;
   margin-right: 10px;
   padding: 40px;
-  border: 1px solid #444;
-  border-radius: 5px;
+  background-color: #93b181;
+  border-radius: 15px;
 }
 
 /* Logo */
@@ -67,6 +82,7 @@ body {
   font-size: 104px;
   line-height: 1;
   text-align: center;
+  color: #fbf8fa;
 }
 
 /* Lists */
@@ -91,11 +107,20 @@ body {
 
 /* Post */
 .post {
-  display: none;
+  height: auto;
+  opacity: 0;
+  position: absolute;
+  transition: all 1s;
+  padding: 5px;
 }
 
 .post.active {
-  display: block;
+  opacity: 1;
+  z-index: 2;
+}
+
+.post-content {
+  color: #fbf8fa;
 }
 
 .post-author {
@@ -109,5 +134,38 @@ body {
 
 .post-tags p {
   margin: 0 10px 0 0;
+}
+
+/* @media */
+@media only screen and (max-width: 768px) {
+  .wrapper {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .posts {
+    padding-top: 10px;
+    height: 850px;
+    -ms-flex: 1 100%;
+        flex: 1 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  .sidebar {
+    -ms-flex: 1 auto;
+        flex: 1 auto;
+  }
+  .sidebar li {
+    display: inline;
+    padding: 5px;
+  }
+  .sidebar:nth-child(3) a {
+    font-size: 10px;
+  }
+  .sidebar:nth-child(3) .section-title {
+    font-size: 12px;
+  }
+  a:hover {
+    font-size: 17px;
+  }
 }
 /*# sourceMappingURL=style.css.map */
