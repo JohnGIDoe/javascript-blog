@@ -70,29 +70,39 @@ function generateTitleList() {
 generateTitleList();
 
 function generateTags(){
+  const optArticleTagsSelector = '.post-tags .list';
+  const optArticleSelector = '.post';
+
   /* find all articles */
+  const articles = document.querySelectorAll(optArticleSelector);
 
   /* START LOOP: for every article: */
+  for (let article of articles) {
 
-  /* find tags wrapper */
+    /* find tags wrapper */
+    const tagsWrapper = article.querySelector(optArticleTagsSelector);
 
-  /* make html variable with empty string */
+    /* make html variable with empty string */
+    let html = '';
 
-  /* get tags from data-tags attribute */
+    /* get tags from data-tags attribute */
+    const articleTags = article.getAttribute('data-tags');
 
-  /* split tags into array */
+    /* split tags into array */
 
-  /* START LOOP: for each tag */
 
-  /* generate HTML of the link */
+    /* START LOOP: for each tag */
 
-  /* add generated code to html variable */
+    /* generate HTML of the link */
 
-  /* END LOOP: for each tag */
+    /* add generated code to html variable */
 
-  /* insert HTML of all the links into the tags wrapper */
+    /* END LOOP: for each tag */
+
+    /* insert HTML of all the links into the tags wrapper */
 
   /* END LOOP: for every article: */
+  }
 }
 
 generateTags();
