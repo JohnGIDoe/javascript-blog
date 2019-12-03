@@ -38,6 +38,7 @@ body {
   text-transform: uppercase;
   font-family: $font-header;
   font-weight: 600;
+
   span {
     text-transform: none;
     font-weight: 400;
@@ -100,6 +101,7 @@ a:hover {
   list-style-type: none;
   margin: 0;
   padding: 0;
+
   .active {
     font-weight: bold;
   }
@@ -127,6 +129,7 @@ a:hover {
   position: absolute;
   transition: all 1s;
   padding: 5px;
+
   &.active {
     opacity: 1;
     z-index: 2;
@@ -143,6 +146,7 @@ a:hover {
 
 .post-tags {
   display: flex;
+
   p {
     margin: 0 10px 0 0;
   }
@@ -153,6 +157,7 @@ a:hover {
   .wrapper {
     flex-wrap: wrap;
   }
+
   .posts {
     padding-top: 10px;
     height: 850px;
@@ -160,22 +165,26 @@ a:hover {
     margin-top: 5px;
     margin-bottom: 5px;
   }
+
   .sidebar {
-    
     flex: 1 auto;
+
     li {
       display: inline;
       padding: 5px;
     }
   }
+
   .sidebar:nth-child(3) {
     a {
       font-size: 10px;
     }
+
     .section-title {
       font-size: 12px;
     }
   }
+
   a:hover {
     font-size: 17px;
   }
