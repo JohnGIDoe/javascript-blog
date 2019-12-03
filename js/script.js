@@ -73,35 +73,40 @@ function generateTags(){
   const optArticleTagsSelector = '.post-tags .list';
   const optArticleSelector = '.post';
 
-  /* find all articles */
+  /* [DONE] find all articles */
   const articles = document.querySelectorAll(optArticleSelector);
 
-  /* START LOOP: for every article: */
+  /* [DONE] START LOOP: for every article: */
   for (let article of articles) {
 
-    /* find tags wrapper */
+    /* [DONE] find tags wrapper */
     const tagsWrapper = article.querySelector(optArticleTagsSelector);
 
-    /* make html variable with empty string */
+    /* [DONE] make html variable with empty string */
     let html = '';
 
-    /* get tags from data-tags attribute */
+    /* [DONE] get tags from data-tags attribute */
     const articleTags = article.getAttribute('data-tags');
 
-    /* split tags into array */
+    /* [DONE] split tags into array */
+    const articleTagsArray = articleTags.split(' ');
 
+    /* [DONE] START LOOP: for each tag */
+    for (let tag of articleTagsArray) {
 
-    /* START LOOP: for each tag */
+      /* [DONE] generate HTML of the link */
+      let linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li> ';
 
-    /* generate HTML of the link */
+      /* [DONE] add generated code to html variable */
+      html += linkHTML;
 
-    /* add generated code to html variable */
+      /* [DONE] END LOOP: for each tag */
+    }
 
-    /* END LOOP: for each tag */
+    /* [DONE] insert HTML of all the links into the tags wrapper */
+    tagsWrapper.insertAdjacentHTML('afterbegin', html);
 
-    /* insert HTML of all the links into the tags wrapper */
-
-  /* END LOOP: for every article: */
+  /* [DONE] END LOOP: for every article: */
   }
 }
 
