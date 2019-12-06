@@ -72,6 +72,9 @@ generateTitleLinks();
 function generateTags(){
   const optArticleTagsSelector = '.post-tags .list';
   const optArticleSelector = '.post';
+  const optTagsListSelector = '.tags.list';
+
+  let allTags = [];
 
   /* [DONE] find all articles */
   const articles = document.querySelectorAll(optArticleSelector);
@@ -100,6 +103,12 @@ function generateTags(){
       /* [DONE] add generated code to html variable */
       html += linkHTML;
 
+      // check if this link is not already in allTags
+      if (allTags.indexOf(linkHTML) == -1) {
+        // add generated code to allTags array
+        allTags.push(linkHTML);
+      }
+
       /* [DONE] END LOOP: for each tag */
     }
 
@@ -108,6 +117,12 @@ function generateTags(){
 
   /* [DONE] END LOOP: for every article: */
   }
+
+  // fins list of tags in right column
+  const tagList = document.querySelector(optTagsListSelector);
+
+  // add html from allTags to tagList
+  tagList.innerHTML = allTags.join(' ');
 }
 
 generateTags();

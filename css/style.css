@@ -42,7 +42,7 @@ a {
 }
 
 a:hover {
-  font-size: 18px;
+  font-size: 16.5px;
 }
 
 /* Layout */
@@ -94,6 +94,10 @@ a:hover {
 
 .list .active {
   font-weight: bold;
+}
+
+.tags li {
+  display: inline;
 }
 
 .list-horizontal li {
