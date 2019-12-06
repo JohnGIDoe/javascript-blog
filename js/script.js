@@ -29,7 +29,7 @@ function titleClickHandler(event){
   currentArticle.classList.add('active');
 }
 
-function generateTitleList() {
+function generateTitleLinks() {
   const optArticleSelector = '.post',
     optTitleSelector = '.post-title',
     optTitleListSelector = '.titles';
@@ -67,14 +67,14 @@ function generateTitleList() {
   }
 }
 
-generateTitleList();
+generateTitleLinks();
 
-function generateTags(){
+function generateTags(customSelector = ''){
   const optArticleTagsSelector = '.post-tags .list';
   const optArticleSelector = '.post';
 
   /* [DONE] find all articles */
-  const articles = document.querySelectorAll(optArticleSelector);
+  const articles = document.querySelectorAll(optArticleSelector + customSelector);
 
   /* [DONE] START LOOP: for every article: */
   for (let article of articles) {
@@ -150,7 +150,7 @@ function tagClickHandler(event){
   }
 
   /* execute function "generateTitleLinks" with article selector as argument */
-
+  generateTitleLinks('[data-tags~="' + tag + '"]');
 
 }
 
