@@ -1,5 +1,16 @@
 'use strict';
 
+const options = {
+  optArticleSelector: '.post',
+  optTitleSelector: '.post-title',
+  optTitleListSelector: '.titles',
+  optArticleTagsSelector:'.post-tags .list',
+  optTagsListSelector: '.tags.list',
+  optCloudClassCount: 5,
+  optCloudClassPrefix: 'tag-size-',
+  optArticleAuthorSelector: '.post-author'
+};
+
 function titleClickHandler(event){
   event.preventDefault();
   const clickedElement = this;
@@ -30,17 +41,15 @@ function titleClickHandler(event){
 }
 
 function generateTitleLinks(customSelector = '') {
-  const optArticleSelector = '.post',
-    optTitleSelector = '.post-title',
-    optTitleListSelector = '.titles';
+
   let html = '';
 
   /* [DONE] Clear content of titlelist */
-  const titleList = document.querySelector(optTitleListSelector);
+  const titleList = document.querySelector(options.optTitleListSelector);
   titleList.innerHTML = '';
 
   /* [DONE] Find all articles and save them to variable: articles */
-  const articles = document.querySelectorAll(optArticleSelector + customSelector);
+  const articles = document.querySelectorAll(options.optArticleSelector + customSelector);
 
   /* [DONE] For every article */
   for (let article of articles) {
@@ -49,7 +58,7 @@ function generateTitleLinks(customSelector = '') {
     const articleId = article.getAttribute('id');
 
     /* [DONE] Find title of every article */
-    const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+    const articleTitle = article.querySelector(options.optTitleSelector).innerHTML;
 
     /* [DONE] Create html for single link */
     const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
@@ -70,20 +79,17 @@ function generateTitleLinks(customSelector = '') {
 generateTitleLinks();
 
 function generateTags(){
-  const optArticleTagsSelector = '.post-tags .list';
-  const optArticleSelector = '.post';
-  const optTagsListSelector = '.tags.list';
   // create object allTags
   let allTags = {};
 
   /* [DONE] find all articles */
-  const articles = document.querySelectorAll(optArticleSelector);
+  const articles = document.querySelectorAll(options.optArticleSelector);
 
   /* [DONE] START LOOP: for every article: */
   for (let article of articles) {
 
     /* [DONE] find tags wrapper */
-    const tagsWrapper = article.querySelector(optArticleTagsSelector);
+    const tagsWrapper = article.querySelector(options.optArticleTagsSelector);
 
     /* [DONE] make html variable with empty string */
     let html = '';
@@ -122,7 +128,7 @@ function generateTags(){
   }
 
   // fins list of tags in right column
-  const tagList = document.querySelector(optTagsListSelector);
+  const tagList = document.querySelector(options.optTagsListSelector);
 
   const tagsParams = calculateTagsParams(allTags);
   console.log('tagsParams: ', tagsParams);
@@ -133,7 +139,7 @@ function generateTags(){
   // Start loop for each tag in allTags
   for (let tag in allTags) {
     // generate code of a link and add it to allTagsHTML
-    allTagsHMTL += '<a href="#tag-' + tag + '">' + tag + ' (' + allTags[tag] + ') ' + '</a>';
+    allTagsHMTL += '<a href="#tag-' + tag + '" class="' + calculateTagClass(allTags[tag], tagsParams) +'">' + tag + ' (' + allTags[tag] + ') ' + '</a>';
   // End loop for each tag in allTags
   }
 
@@ -155,6 +161,10 @@ function calculateTagsParams(tags) {
     min: Math.min(...tagsArray),
     max: Math.max(...tagsArray)
   };
+}
+
+function calculateTagClass(count, params) {
+
 }
 
 generateTags();
@@ -218,17 +228,14 @@ function addClickListenersToTags(){
 addClickListenersToTags();
 
 function generateAuthors() {
-  const optArticleAuthorSelector = '.post-author';
-  const optArticleSelector = '.post';
-
   /* [DONE] find all authors */
-  const articles = document.querySelectorAll(optArticleSelector);
+  const articles = document.querySelectorAll(options.optArticleSelector);
 
   /* [DONE] START LOOP: for every article: */
   for (let article of articles) {
 
     /* [DONE] find authors wrapper */
-    const tagsWrapper = article.querySelector(optArticleAuthorSelector);
+    const tagsWrapper = article.querySelector(options.optArticleAuthorSelector);
 
     /* [DONE] make html variable with empty string */
     let html = '';
