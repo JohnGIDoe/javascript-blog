@@ -139,7 +139,7 @@ function generateTags(){
   // Start loop for each tag in allTags
   for (let tag in allTags) {
     // generate code of a link and add it to allTagsHTML
-    allTagsHMTL += '<a href="#tag-' + tag + '" class="' + calculateTagClass(allTags[tag], tagsParams) +'">' + tag + ' (' + allTags[tag] + ') ' + '</a>';
+    allTagsHMTL += '<li><a href="#tag-' + tag + '" class="' + calculateTagClass(allTags[tag], tagsParams) +'">' + tag + ' </a></li>';
   // End loop for each tag in allTags
   }
 
@@ -164,7 +164,11 @@ function calculateTagsParams(tags) {
 }
 
 function calculateTagClass(count, params) {
+  let classNumber;
 
+  classNumber = Math.floor(((count - params.min) / (params.max - params.min)) * (options.optCloudClassCount - 1) + 1 );
+
+  return options.optCloudClassPrefix + classNumber;
 }
 
 generateTags();
