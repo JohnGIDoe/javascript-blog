@@ -124,6 +124,9 @@ function generateTags(){
   // fins list of tags in right column
   const tagList = document.querySelector(optTagsListSelector);
 
+  const tagsParams = calculateTagsParams(allTags);
+  console.log('tagsParams: ', tagsParams);
+
   // create variable for all links HTML code
   let allTagsHMTL = '';
 
@@ -136,6 +139,22 @@ function generateTags(){
 
   // Add HTML from allTagsHTML to tagList
   tagList.innerHTML = allTagsHMTL;
+}
+
+function calculateTagsParams(tags) {
+  // declare empty array and empty object
+  // eslint-disable-next-line no-unused-vars
+  let tagsArray = [], calculatedTagsParams = {};
+  // Start loop for each tag
+  for (let tag in tags) {
+    // add number of occurences of every tag to the tags Array
+    tagsArray.push(tags[tag]);
+  }
+  // Find and return maximum and minimum number of all tags occurencies
+  return calculatedTagsParams = {
+    min: Math.min(...tagsArray),
+    max: Math.max(...tagsArray)
+  };
 }
 
 generateTags();
