@@ -73,8 +73,8 @@ function generateTags(){
   const optArticleTagsSelector = '.post-tags .list';
   const optArticleSelector = '.post';
   const optTagsListSelector = '.tags.list';
-
-  let allTags = [];
+  // create object allTags
+  let allTags = {};
 
   /* [DONE] find all articles */
   const articles = document.querySelectorAll(optArticleSelector);
@@ -104,9 +104,12 @@ function generateTags(){
       html += linkHTML;
 
       // check if this link is not already in allTags
-      if (allTags.indexOf(linkHTML) == -1) {
-        // add generated code to allTags array
-        allTags.push(linkHTML);
+      if (!Object.hasOwnProperty.call(allTags, tag)) {
+        // add tag to allTags object
+        allTags[tag] = 1;
+      } else {
+        // if tag is already in allTags object raise its value of one
+        allTags[tag]++;
       }
 
       /* [DONE] END LOOP: for each tag */
@@ -121,8 +124,18 @@ function generateTags(){
   // fins list of tags in right column
   const tagList = document.querySelector(optTagsListSelector);
 
-  // add html from allTags to tagList
-  tagList.innerHTML = allTags.join(' ');
+  // create variable for all links HTML code
+  let allTagsHMTL = '';
+
+  // Start loop for each tag in allTags
+  for (let tag in allTags) {
+    // generate code of a link and add it to allTagsHTML
+    allTagsHMTL += '<a href="#tag-' + tag + '">' + tag + ' (' + allTags[tag] + ') ' + '</a>';
+  // End loop for each tag in allTags
+  }
+
+  // Add HTML from allTagsHTML to tagList
+  tagList.innerHTML = allTagsHMTL;
 }
 
 generateTags();
@@ -171,7 +184,7 @@ function tagClickHandler(event){
 
 function addClickListenersToTags(){
   /* find all links to tags */
-  const tags = document.querySelectorAll('.post-tags .list a');
+  const tags = document.querySelectorAll('a[href^="#tag-"]');
 
   /* START LOOP: for each link */
   for (let tag of tags) {
@@ -203,7 +216,7 @@ function generateAuthors() {
 
     /* [DONE] get author from data-authors attribute */
     const author = article.getAttribute('data-author');
-    console.log(author);
+
     /* [DONE] generate HTML of the link */
     let linkHTML = '<a href="#author-' + author + '">' + author + '</a> ';
 
