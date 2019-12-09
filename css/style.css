@@ -42,7 +42,32 @@ a {
 }
 
 a:hover {
+  font-size: 16.5px;
+}
+
+.tag-size-1 {
+  font-size: 12px;
+  color: beige;
+}
+
+.tag-size-2 {
+  font-size: 14px;
+  color: brown;
+}
+
+.tag-size-3 {
+  font-size: 16px;
+  color: white;
+}
+
+.tag-size-4 {
   font-size: 18px;
+  color: blue;
+}
+
+.tag-size-5 {
+  font-size: 20px;
+  color: red;
 }
 
 /* Layout */
@@ -94,6 +119,10 @@ a:hover {
 
 .list .active {
   font-weight: bold;
+}
+
+.tags li {
+  display: inline;
 }
 
 .list-horizontal li {
